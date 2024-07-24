@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <meta name="author" content="Ha Lee">
+  <title>Contacts</title>
+  <style>
+    body {
+      background-color: #f0f0f0;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    main {
+      max-width: 500px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    h1 {
+      padding: 0px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 10px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+      text-align: center;
+    }
+    #result {
+      margin-top: 20px;
+      padding: 10px;
+      background-color: #fff;
+      border: 1px solid #ddd;
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <h1>Contacts</h1>
+    <table>
+      <tr>
+        <th>Slot#</th>
+        <th>Name</th>
+      </tr>
+      <tr>
+        <td id="slot0"></td>
+        <td id="name0"></td>
+      </tr>
+      <tr>
+        <td id="slot1"></td>
+        <td id="name1"></td>
+      </tr>
+      <tr>
+        <td id="slot2"></td>
+        <td id="name2"></td>
+      </tr>
+      <tr>
+        <td id="slot3"></td>
+        <td id="name3"></td>
+      </tr>
+      <tr>
+        <td id="slot4"></td>
+        <td id="name4"></td>
+      </tr>
+      <tr>
+        <td id="slot5"></td>
+        <td id="name5"></td>
+      </tr>
+    </table>
+    <p id="result"></p>
+  </main>
+  <script>
+    // Store the contact name to the array
+    const contacts = ["Arnold", "Sly", "Dwayne", "Vin", "JCVD", "Steven"];
+  
+    // Set the contact list to the table
+    for (let i = 0; i < contacts.length; i++) {
+      document.getElementById("slot" + i).innerHTML = i;
+      document.getElementById("name" + i).innerHTML = contacts[i];
+    }
+
+    // Set entire list for the prompt
+    let contactsString = "Welcome to the Contact Manager!\n";
+    contactsString += "You have the following contacts:\n\n";
+    for (let i = 0; i < contacts.length; i++) {
+      contactsString += `${i}. ${contacts[i]}\n`;
+    }
+    
+    while (true) {
+      //Prompt the user for a name with contact list
+      let slot = prompt(contactsString + "\nEnter a slot number for the contact you want to see:");
+      // If the name exists, print the message "You selected [name]"
+      if (slot >= 0 && slot <= 5) {
+        document.getElementById("result").innerHTML = `You selected ${contacts[slot]}`;
+      }
+      // If the name does not exist, tell the user that the name is not found and offer the opportunity to try again.
+      else {
+        slot = prompt(contactsString + "\nName not found. Try again.");
+      }
+      // Prompt the user if they want to try again
+      let tryAgain = prompt("Do you want to try again? (y/n)");
+      // If the user enters "y" or "Y", continue the loop or exit the loop if the user enters "n" or "N"
+      if (tryAgain.toLowerCase() === "y") {
+        continue;
+      }
+      else {
+        break;
+      }
+    }
+
+  </script>
+</body>
+
+</html>
