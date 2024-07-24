@@ -101,7 +101,8 @@
       }
       // If the name does not exist, tell the user that the name is not found and offer the opportunity to try again.
       else {
-        slot = prompt(contactsString + "\nName not found. Try again.");
+        alert("Name not found. Try again.");
+        continue;
       }
       // Prompt the user if they want to try again
       let tryAgain = prompt("Do you want to try again? (y/n)");
